@@ -8,7 +8,7 @@ import { Application, Assets, Sprite } from 'pixi.js';
     await app.init({ background: '#1099bb', resizeTo: window });
     document.body.appendChild(app.canvas);
 
-    const countBunnies = 1000
+    const countBunnies = 1
     let startX = 20
     let startY = 20
 
@@ -36,10 +36,8 @@ import { Application, Assets, Sprite } from 'pixi.js';
         bunnies.push(bunny);
     }
 
-    const maxEscapeDistance = 300;
-    const maxSpeed = 500;
+    const maxEscapeDistance = 70;
     const acceleration = 0.1;
-    const deceleration = 0.05;
 
 
     function onMouseMove(event) {
@@ -51,7 +49,7 @@ import { Application, Assets, Sprite } from 'pixi.js';
             // Находим длину вектора
             const distance = Math.sqrt(dx * dx + dy * dy);
 
-            // Если расстояние больше 50px, оставляем кролика на месте
+            // Если расстояние больше maxEscapeDistance, оставляем кролика на месте
             if (distance > maxEscapeDistance) {
                 return;
             }
@@ -61,11 +59,15 @@ import { Application, Assets, Sprite } from 'pixi.js';
             const normalizedDy = dy / distance;
 
             // Вычисляем скорость, основанную на расстоянии от курсора мыши
-            const speed = Math.min(maxSpeed, distance * acceleration);
+            const speed = distance * acceleration; //0.5
 
             // Обновляем скорость кролика
             bunny.velocityX = normalizedDx * speed;
             bunny.velocityY = normalizedDy * speed;
+
+            console.log(`
+            Distance: ${distance}
+            `)
         })
     }
 
@@ -76,8 +78,8 @@ import { Application, Assets, Sprite } from 'pixi.js';
             bunny.y += bunny.velocityY;
 
             // Затухание скорости
-            bunny.velocityX *= 0.999;
-            bunny.velocityY *= 0.999;
+            bunny.velocityX *= 0.8;
+            bunny.velocityY *= 0.8;
 
             // Проверяем, выходит ли кролик за границы экрана
             if (bunny.x < 0) {

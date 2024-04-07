@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="button-container">
+    <button class="button" onclick="loadScript('bunny.js', this)">Bunny</button>
+    <!-- <button class="button" onclick="loadScript('script2.js')">Скрипт 2</button> -->
+  </div>
+
+  <script>
+    function loadScript(scriptUrl, button) {
+      var script = document.createElement('script');
+      script.src = scriptUrl;
+      document.body.appendChild(script);
+      var buttonContainer = document.querySelector('.button-container');
+      buttonContainer.classList.add('hidden');
+    }
+  </script>
+</body>
+</html>

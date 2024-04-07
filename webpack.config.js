@@ -1,17 +1,19 @@
 const path = require('path');
 
 module.exports = {
-  entry: path.resolve(__dirname, './src/js/index.js'),
+  entry: {
+    bunny: './js/bunny.js',
+  },
   output: { 
     path: path.resolve(__dirname, 'dist'),
-    filename: 'main.js'
+    filename: '[name].js'
   },
   devServer: {
     static: {
-      directory: path.join(__dirname), // Указываем корневую директорию проекта
+      directory: path.join(__dirname, 'src'),
     },
     compress: true,
-    port: 9000,
+    port: 8080,
     open: true,
   },
 }
