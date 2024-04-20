@@ -24,7 +24,7 @@ import { Application, Assets, Sprite } from 'pixi.js';
   let startNum = 0
 
   function updateFly() {
-    bee.y = (app.screen.width / 2) - pixelDensity + (Math.sin(startNum) * pixelDensity)
+    bee.y = (app.screen.height / 2)+ (Math.sin(startNum) * pixelDensity)
     startNum += 0.01 * speed
   }
 
