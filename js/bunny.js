@@ -3,7 +3,10 @@ import { Application, Assets, Sprite } from 'pixi.js';
 // Asynchronous IIFE
 (async () =>
 {
-    const app = new Application();
+    const app = new Application({
+        width: window.innerWidth,
+        height: window.innerHeight,
+    });
     globalThis.__PIXI_APP__ = app;
     await app.init({ background: '#1099bb', resizeTo: window });
     document.body.appendChild(app.canvas);
@@ -14,7 +17,7 @@ import { Application, Assets, Sprite } from 'pixi.js';
 
     const bunnies = []
     for (let i = 0; i < countBunnies; i++) {
-        const texture = await Assets.load('https://pixijs.com/assets/bunny.png');
+        const texture = await Assets.load('./img/bunny.png');
         const bunny = new Sprite(texture);
         app.stage.addChild(bunny); //что это?
     
