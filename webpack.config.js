@@ -4,6 +4,7 @@ module.exports = {
   entry: {
     bunny: './js/bunny.js',
     fly: './js/fly.js',
+    eyes: './js/eyes.js',
   },
   output: { 
     path: path.resolve(__dirname, 'dist'),
